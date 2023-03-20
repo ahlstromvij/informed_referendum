@@ -37,3 +37,7 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+.DS_Store
+
+# BES datafile
+bes_f2f_2017_v1.5.sav
