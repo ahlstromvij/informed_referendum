@@ -8,7 +8,7 @@ library(Hmisc)
 sav_data = read_sav("data/bes_f2f_2017_v1.5.sav")
 
 all_data <- sav_data %>% 
-  select(y09, # gender
+  dplyr::select(y09, # gender
          y10_banded, # age
          y11, # ethnicity
          w01, # social class
@@ -23,7 +23,7 @@ all_data <- sav_data %>%
          wt_vote) # survey weight
 
 all_data <- all_data %>% 
-  rename(gender = y09,
+  dplyr::rename(gender = y09,
          age = y10_banded,
          ethnic_group = y11,
          social_class = w01,
@@ -122,10 +122,10 @@ all_data <- all_data %>%
                            x01_6 == 2 ~ 1,
                            x01_6 == -1 ~ 0,
                            TRUE ~ NA_real_)) %>% 
-  select(-social_class_squeeze)
+  dplyr::select(-social_class_squeeze)
 
 # check missing values
-vis_miss(all_data)
+vis_miss(all_data[,1:16])
 
 # remove rows with missing survey weights
 all_data <- all_data[complete.cases(all_data[17]), ] # 127 observations missing weights
