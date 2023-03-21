@@ -173,7 +173,7 @@ pred_prob_combined %>%
   geom_point() +
   geom_line() +
   facet_wrap(~party_id)
-dev.off()
+dev.off
 
 # p values
 z_demographic <- summary(m_demographic)$coefficients/summary(m_demographic)$standard.errors
