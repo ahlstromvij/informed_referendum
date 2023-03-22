@@ -56,13 +56,19 @@ mod_3pl <- mirt(data=compl_data[,11:16],
                 itemtype = "3PL")
 
 # not significantly different so use 2pl model
-anova(mod_2pl, mod_3pl)
+mirt::anova(mod_2pl, mod_3pl)
 
 # summary of model
 summary(mod_2pl)
 plot(mod_2pl, type="trace")
 plot(mod_2pl, type="info")
+plot(mod_2pl, type = "infotrace")
 coef(mod_2pl, IRTpars=T)
+
+# item fit
+# Non-significant S-X2 values and RMSEA < .06 are usually considered evidence of adequate fit for an item.
+# https://hanhao23.github.io/project/irttutorial/irt-tutorial-in-r-with-mirt-package/
+itemfit(mod_2pl)
 
 # model fit
 itemfit(mod_2pl, empirical.plot = 1)
@@ -77,6 +83,9 @@ Q3resid <- data.frame(residuals(mod_2pl, type="Q3")) # max = 0.279
 
 # each respondent's score
 compl_data$know <- fscores(mod_2pl)[,1] # each person's expected score
+
+# score for someone with all answers correct (bottom row)
+fscores(mod_2pl, full.scores = FALSE) # 1.036386265
 
 # distribution
 compl_data %>% 
