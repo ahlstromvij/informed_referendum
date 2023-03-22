@@ -43,9 +43,10 @@ m_partisan <- multinom(eu_vote ~
                       Hess = TRUE,
                       weights = prop_score)
 summary(m_partisan)
+round(coef(m_partisan),3)
 # moving from uninformed to informed is associated with a with an increase in the log odds of 
-# voting leave in the amount of .45; and an increase in the log odds of voting remain in the amount
-# of 0.86.
+# voting leave in the amount of 0.3295177; and an increase in the log odds of voting remain in the amount
+# of 0.8963584.
 
 # relative risk
 exp(coef(m_partisan))
@@ -89,9 +90,10 @@ pred_prob_partisan %>%
 z_partisan <- summary(m_partisan)$coefficients/summary(m_partisan)$standard.errors
 p_partisan <- data.frame((1 - pnorm(abs(z_partisan), 0, 1)) * 2)
 p_partisan
+round(p_partisan,3)
 
 # Diagnostics
-r2_mcfadden(m_partisan) # 0.174
+r2_mcfadden(m_partisan) # 0.187
 
 # Assess colinearity. The smallest possible value of VIF is one (absence of multicollinearity). 
 # As a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity (James et al. 2014).
@@ -129,9 +131,10 @@ m_demographic <- multinom(eu_vote ~
                           Hess = TRUE,
                           weights = prop_score)
 summary(m_demographic)
+round(coef(m_demographic),3)
 # moving from uninformed to informed is associated with a with an increase in the log odds of 
-# voting leave in the amount of .48; and an increase in the log odds of voting remain in the amount
-# of 0.90.
+# voting leave in the amount of 0.4057452; and an increase in the log odds of voting remain in the amount
+# of 0.9601650
 
 # relative risk
 exp(coef(m_demographic))
@@ -173,15 +176,16 @@ pred_prob_combined %>%
   geom_point() +
   geom_line() +
   facet_wrap(~party_id)
-dev.off
+dev.off()
 
 # p values
 z_demographic <- summary(m_demographic)$coefficients/summary(m_demographic)$standard.errors
 p_demographic <- data.frame((1 - pnorm(abs(z_demographic), 0, 1)) * 2)
 p_demographic
+round(p_demographic,3)
 
 # Diagnostics
-r2_mcfadden(m_demographic) # 0.130
+r2_mcfadden(m_demographic) # 0.139
 
 # Assess colinearity. The smallest possible value of VIF is one (absence of multicollinearity). 
 # As a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity (James et al. 2014).
