@@ -238,7 +238,7 @@ ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   theme_minimal()
 dev.off()
 
-tiff(file="plots/informed_referendum.tiff", width = 8, height = 6, units = 'in', res = 300, compression = "lzw")
+tiff(file="plots/informed_referendum.tiff", width = 7, height = 5, units = 'in', res = 300, compression = "lzw")
 ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   geom_bar(stat="identity") +
   geom_hline(yintercept=50, linetype="dotted", color="black") +
