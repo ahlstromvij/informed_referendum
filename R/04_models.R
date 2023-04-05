@@ -237,3 +237,19 @@ ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   xlab("") +
   theme_minimal()
 dev.off()
+
+tiff(file="plots/informed_referendum.tiff", width = 8, height = 6, units = 'in', res = 300, compression = "lzw")
+ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
+  geom_bar(stat="identity") +
+  geom_hline(yintercept=50, linetype="dotted", color="black") +
+  scale_fill_brewer(palette="Blues") +
+  annotate("text", x = 1, y = 75, label = paste(df_graph$Support[1],"%", sep="")) +
+  annotate("text", x = 1, y = 25, label = paste(df_graph$Support[2],"%", sep="")) +
+  annotate("text", x = 2, y = 75, label = paste(df_graph$Support[3],"%", sep="")) +
+  annotate("text", x = 2, y = 25, label = paste(df_graph$Support[4],"%", sep="")) +
+  annotate("text", x = 3, y = 75, label = paste(df_graph$Support[5],"%", sep="")) +
+  annotate("text", x = 3, y = 25, label = paste(df_graph$Support[6],"%", sep="")) +
+  ylab("Support (%)") +
+  xlab("") +
+  theme_minimal()
+dev.off()
