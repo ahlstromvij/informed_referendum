@@ -5,6 +5,7 @@ library(haven)
 library(naniar)
 library(Hmisc)
 
+# data available at https://www.britishelectionstudy.com/data-object/2017-face-to-face/
 sav_data = read_sav("data/bes_f2f_2017_v1.5.sav")
 
 all_data <- sav_data %>% 
