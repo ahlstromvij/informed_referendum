@@ -44,12 +44,6 @@ m_partisan <- multinom(eu_vote ~
                       weights = prop_score)
 summary(m_partisan)
 round(coef(m_partisan),3)
-# moving from uninformed to informed is associated with a with an increase in the log odds of 
-# voting leave in the amount of 0.3295177; and an increase in the log odds of voting remain in the amount
-# of 0.8963584.
-
-# relative risk
-exp(coef(m_partisan))
 
 # predicted probabilities
 table(compl_data$party_id)
@@ -132,12 +126,6 @@ m_demographic <- multinom(eu_vote ~
                           weights = prop_score)
 summary(m_demographic)
 round(coef(m_demographic),3)
-# moving from uninformed to informed is associated with a with an increase in the log odds of 
-# voting leave in the amount of 0.4057452; and an increase in the log odds of voting remain in the amount
-# of 0.9601650
-
-# relative risk
-exp(coef(m_demographic))
 
 pred_prob_demographic <- data.frame(party_id = rep(c("cons", "labour", "lib_dem", "no_party"),2), 
                                  know_binary = c(1,1,1,1,0,0,0,0),

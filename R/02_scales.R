@@ -65,11 +65,6 @@ plot(mod_2pl, type="info")
 plot(mod_2pl, type = "infotrace")
 coef(mod_2pl, IRTpars=T)
 
-# item fit
-# Non-significant S-X2 values and RMSEA < .06 are usually considered evidence of adequate fit for an item.
-# https://hanhao23.github.io/project/irttutorial/irt-tutorial-in-r-with-mirt-package/
-itemfit(mod_2pl)
-
 # model fit
 itemfit(mod_2pl, empirical.plot = 1)
 itemfit(mod_2pl, empirical.plot = 2)
