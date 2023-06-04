@@ -210,7 +210,7 @@ df_graph <- df_graph %>%
 df_graph <- within(df_graph, Scenario <- factor(Scenario,
                                                 levels=c("Actual", "Informed (Partisanship)", "Informed (Demographic)")))
 
-png(file="plots/informed_referendum.png", width = 8, height = 6, units = 'in', res = 300)
+# png(file="plots/informed_referendum.png", width = 8, height = 6, units = 'in', res = 300)
 ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   geom_bar(stat="identity") +
   geom_hline(yintercept=50, linetype="dotted", color="black") +
@@ -224,9 +224,9 @@ ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   ylab("Support (%)") +
   xlab("") +
   theme_minimal()
-dev.off()
+# dev.off()
 
-tiff(file="plots/informed_referendum.tiff", width = 7, height = 5, units = 'in', res = 300, compression = "lzw")
+# tiff(file="plots/informed_referendum.tiff", width = 7, height = 5, units = 'in', res = 300, compression = "lzw")
 ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   geom_bar(stat="identity") +
   geom_hline(yintercept=50, linetype="dotted", color="black") +
@@ -240,4 +240,4 @@ ggplot(data=df_graph, aes(x=Scenario, y=Support, fill=Vote)) +
   ylab("Support (%)") +
   xlab("") +
   theme_minimal()
-dev.off()
+# dev.off()
